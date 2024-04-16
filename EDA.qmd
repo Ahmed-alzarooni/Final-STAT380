@@ -1,5 +1,5 @@
 ---
-title: "Homework 5"
+title: "Final-STAT380"
 author: "Ahmed alzarooni{style='background-color: yellow;'}"
 toc: true
 title-block-banner: true
@@ -16,26 +16,15 @@ format:
 
 
 ---
-
-::: {.callout-important style="font-size: 0.8em;"}
-
-Please read the instructions carefully before submitting your assignment.
-
-1. This assignment requires you to only upload a `PDF` file on Canvas
-1. Don't collapse any code cells before submitting. 
-1. Remember to make sure all your code output is rendered properly before uploading your submission.
-
-⚠️ Please add your name to the author information in the frontmatter before submitting your assignment ⚠️
-:::
-
-
-In this assignment, we will explore decision trees, support vector machines and neural networks for classification and regression. The assignment is designed to test your ability to fit and analyze these models with different configurations and compare their performance.
+###### Step 1: Load Necessary Libraries
+First, ensure you have the necessary libraries. We'll use readxl to import Excel files and dplyr and ggplot2 for data manipulation and visualization.
 
 We will need the following packages:
 
 
 ```{R, message=FALSE, warning=FALSE, results='hide'}
 packages <- c(
+  "readxl",
   "tibble",
   "dplyr", 
   "readr", 
@@ -59,86 +48,65 @@ sapply(packages,library, character.only=T)
 <br><br><br><br>
 ---
 
-## Question 1
-::: {.callout-tip}
-## 60 points
-Prediction of Median House prices
-:::
+###### Step 2: Read the Data and initial Data Cleaning
+Use read_excel to load the data from the Excel files.Check for missing values and decide how to handle them, either by removing or imputing.
 
-###### 1.1 (2.5 points)
-
-
-The `data` folder contains the `housing.csv` dataset which contains housing prices in California from the 1990 California census. The objective is to predict the median house price for California districts based on various features.
-
-
-Read the data file as a tibble in R. Preprocess the data such that:
-
-1. the variables are of the right data type, e.g., categorical variables are encoded as factors
-2. all column names to lower case for consistency
-3. Any observations with missing values are dropped
 
 ```{R}
-path <- "data/housing.csv"
-
-df <- read_csv(path) %>% 
+ldc_data <- read_excel("LDC_data.xlsx") %>% 
     rename_with(tolower) %>% 
     drop_na() %>%
     mutate_if(is.character, as.factor)
+
+energy_data <- read_excel("owid-energy-data.xlsx") %>% 
+    rename_with(tolower) %>% 
+    drop_na() %>%
+    mutate_if(is.character, as.factor)
+
 ```
 
 ---
 
-###### 1.2 (2.5 points)
+###### Step 3: Initial Data Examination
+Check basic information about the datasets such as dimensions, column names, and a preview of the data.
 
-Visualize the correlation matrix of all numeric columns in `df` using `corrplot()`
 
 ```{R}
-df %>% 
-  select_if(is.numeric) %>% 
-  cor() %>%
-  corrplot(method = "circle")
+dim(ldc_data)
+names(ldc_data)
+head(ldc_data)
+
+dim(energy_data)
+names(energy_data)
+head(energy_data)
+
 ```
 
 ---
 
-###### 1.3 (5 points)
-
-Split the data `df` into `df_train` and `df_split` using `test_ind` in the code below:
+###### Step 4: Summary Statistics
+Get a statistical summary of the datasets to understand the distribution of data.
 
 ```{R}
-set.seed(42)
-test_ind <- sample(
-  1:nrow(df), 
-  floor( nrow(df)/10 ),
-  replace=FALSE
-)
+summary(ldc_data)
+summary(energy_data)
 
-df_train <- df[-test_ind, ]
-df_test  <- df[test_ind, ]
 ```
 
 ---
 
-###### 1.4 (5 points)
-
-Fit a linear regression model to predict the `median_house_value` :
-
-* `latitude`
-* `longitude`
-* `housing_median_age`
-* `total_rooms`
-* `total_bedrooms`
-* `population`
-* `median_income`
-* `ocean_proximity`
-
-Interpret the coefficients and summarize your results. 
-
+###### Step 6: Visualization
+Create some visualizations to understand the data better. For instance, if you have a numeric variable like 'total_energy_consumption' in the energy dataset, you could plot it.
 ```{R}
-lm_fit = lm(median_house_value ~ latitude + longitude + housing_median_age + 
-             total_rooms + total_bedrooms + population + median_income + 
-             ocean_proximity, data = df_train)
-summary(lm_fit)
+# Histogram of a numeric variable in ldc_data
+ggplot(ldc_data, aes(x = numeric_column_name)) + 
+  geom_histogram(bins = 30, fill = "blue", color = "black")
+
+# Line plot of energy consumption over time in energy_data
+ggplot(energy_data, aes(x = year, y = total_energy_consumption)) + 
+  geom_line() + 
+  labs(title = "Total Energy Consumption Over Time", x = "Year", y = "Energy Consumption")
+
 ```
 
 ---
