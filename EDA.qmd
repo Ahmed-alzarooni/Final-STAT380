@@ -8,8 +8,8 @@ execute:
   freeze: true
   cache: true
 format:
-  html: # comment this line to get pdf
-  # pdf: 
+  #html: # comment this line to get pdf
+   pdf: 
     fig-width: 7
     fig-height: 7
 ---
