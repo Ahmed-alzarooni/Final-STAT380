@@ -1,0 +1,17 @@
+readxl
+tibble
+dplyr
+readr
+tidyr
+purrr
+broom
+magrittr
+corrplot
+ggplot2
+lattice
+caret
+rpart
+rpart.plot
+e1071
+torch
+luz
