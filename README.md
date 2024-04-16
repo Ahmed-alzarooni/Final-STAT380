@@ -1,4 +1,4 @@
-# Final-STAT380
+# Final STAT380
 *Project: Energy Access and Poverty Eradication*
 
 # Project Overview
@@ -11,7 +11,7 @@ The datasets used in this project are sourced from the following URLs:
 
 Our World in Data - Energy
  * Our World In Data - [Energy](https://ourworldindata.org/energy)
- * UN - [Development Policy and Analysis Division](https://www.un.org/development/desa/dpad/least-developed-country-category/ldc-data-retrieval.html))
+ * UN - [Development Policy and Analysis Division](https://www.un.org/development/desa/dpad/least-developed-country-category/ldc-data-retrieval.html)
 
 
 # Key Sections of the Script
