@@ -38,7 +38,10 @@ packages <- c(
   "rpart.plot",
   "e1071",
   "torch", 
-  "luz"
+  "luz",
+  "stringr",
+  "esquisse",
+  "randomForest"
 )
 
 #renv::install(packages)
@@ -53,19 +56,14 @@ Use read_excel to load the data from the Excel files.Check for missing values an
 
 
 ```{R}
-years <- c("2000", "2003", "2006", "2009", "2012", "2015", "2018", "2021", "2024")
+# Read the datasets
+code_income_level <- read_excel("Code and Income Level.xls")
+gdp_data <- read_excel("GDP.xls")
 
-data_list <- list()
-
-for (year in years) {
-  df <- read_excel("LDC_data.xlsx", sheet = year)
-  df$year <- year  # Add a new column 'year' to the dataframe
-  data_list[[year]] <- df
-}
-
-energy_data <- read_excel("owid-energy-data.xlsx")
+Electricity_Access <- read_excel("All.xlsx")
 
 ```
+
 
 ---
 
@@ -74,14 +72,9 @@ Check basic information about the datasets such as dimensions, column names, and
 
 
 ```{R}
-dim(data_list)
-names(data_list)
-head(data_list)
-
-dim(energy_data)
-names(energy_data)
-head(energy_data)
-
+head(code_income_level)
+head(gdp_data)
+head(Electricity_Access)
 ```
 
 ---
@@ -89,19 +82,57 @@ head(energy_data)
 #### Step 4: Data Cleaning
 Check for missing values and decide how to handle them, either by removing or imputing.
 
+
 ```{R}
-# Start with the first data frame
-combined_data <- data_list[[1]]
-
-# Sequentially join each subsequent data frame using full_join to keep all data
-for (i in 2:length(data_list)) {
-  combined_data <- full_join(combined_data, data_list[[i]], by = "year")
-}
-ldc_data <- combined_data
-sum(is.na(ldc_data))
-sum(is.na(energy_data))
+code_income_level <- code_income_level %>%
+  mutate(income_level = factor(IncomeGroup, levels = c("Low income", "Lower middle income", "Upper middle income", "High income"), ordered = TRUE))
 
 
+gdp_data <- gdp_data %>%
+  select('Country Name','Country Code', '2000', '2005', '2010', '2015', '2022')
+
+
+comb_GDP_inc_df <- inner_join(gdp_data, code_income_level, by = "Country Code")
+head(comb_GDP_inc_df)
+```
+
+```{R}
+#Check for identical values
+identical_values <- comb_GDP_inc_df$income_level == comb_GDP_inc_df$income_group
+sum(!identical_values)
+comb_GDP_inc_df_long <- comb_GDP_inc_df %>%
+  select(-IncomeGroup)
+comb_GDP_inc_df_long <- pivot_longer(comb_GDP_inc_df_long, 
+                                        cols = c(`2000`, `2005`, `2010`, `2015`, `2022`), 
+                                        names_to = "Year", 
+                                        values_to = "GDP")
+
+comb_GDP_inc_df_long <- na.omit(comb_GDP_inc_df_long)
+colnames(comb_GDP_inc_df_long)
+
+```
+
+```{R}
+Electricity_Access <- Electricity_Access %>%
+  mutate(across(where(is.character) & !all_of("Country"), ~str_replace(., ">99%", "0.990"))) %>%
+  mutate(across(where(is.character) & !all_of("Country"), as.numeric)) %>%
+  mutate(across(where(is.numeric), round, digits = 3))
+
+Electricity_Access_long <- pivot_longer(Electricity_Access, 
+                                        cols = c(`2000`, `2005`, `2010`, `2015`, `2022`), 
+                                        names_to = "Year", 
+                                        values_to = "Access")
+Electricity_Access_long <- rename(Electricity_Access_long, 'Country Name' = 'Country')
+head(Electricity_Access)
+head(Electricity_Access_long)
+```
+
+```{R}
+
+data_merged <- inner_join(Electricity_Access_long, comb_GDP_inc_df_long, by = c("Country Name", "Year"))
+data_merged <- na.omit(data_merged)
+
+summary(data_merged)
 ```
 
 
@@ -112,37 +143,67 @@ sum(is.na(energy_data))
 Get a statistical summary of the datasets to understand the distribution of data.
 
 ```{R}
-summary(ldc_data)
-summary(energy_data)
+summary(comb_GDP_inc_df)
+summary(Electricity_Access)
 
 ```
-
 
 #### Step 6: Visualization
-######Example 1: Histograms of a Numeric Variable
+######Example 1: Bar Chart of income_level count and IncomeGroup
 
 ```{R}
-ggplot(energy_data, aes(x = gdp)) +
-  geom_histogram(bins = 30, fill = "blue", color = "black") +
-  labs(title = "Distribution of GDP Per Capita", x = "GDP Per Capita", y = "Frequency")
-
+ggplot(comb_GDP_inc_df) +
+  aes(x = income_level, fill = IncomeGroup) +
+  geom_bar() +
+  scale_fill_hue(direction = 1) +
+  theme_minimal()
 ```
 
-###### Example 2: Line Plot
+###### Example 2: Line Plot of 3 countries showing 3 different states of Electricity access
 
 ```{R}
-ggplot(energy_data, aes(x = fossil_fuel_consumption, y = gas_consumption)) +
-  geom_line() +
-  labs(title = "fossil fuel in relation to gas", x = "fossil_fuel_consumption", y = "gas_consumption")
+filtered_countries <- Electricity_Access_long %>% 
+  filter(`Country Name` %in% c("China", "India", "Yemen"))
+
+ggplot(filtered_countries, aes(x = Year, y = Access, color = `Country Name`, group = `Country Name`)) +
+  geom_line() + 
+  geom_point() + 
+  labs(title = "Electricity Access Over Time",
+       x = "Year",
+       y = "Access",
+       color = "Country") + 
+  theme_minimal()
+
+```
+###### Example 3: Boxplot for Access by income_level
+```{R}
+ggplot(data_merged, aes(x = income_level, y = Access)) + 
+    geom_boxplot() +
+    theme_minimal() +
+    ggtitle("Electricity Access by Income Level")
+
 ```
 
 ---
 
+#### Step 7: Model Training
 
+```{R}
+# set.seed(123)  # for reproducibility
+# training_rows <- createDataPartition(data_merged$'2022', p = 0.8, list = FALSE)
+# train_data <- comb_GDP_inc_df[training_rows, ]
+# test_data <- comb_GDP_inc_df[-training_rows, ]
+```
 
+```{R}
+data_merged$log_GDP <- log(data_merged$GDP + 1)
 
+# Set up training control
+train_control <- trainControl(method = "cv", number = 10)
 
-
+# Train the model
+model <- train(income_level ~ log_GDP + Access, data = data_merged, method = "rpart", trControl = train_control)
+```
 ---
 
 
