@@ -1,18 +1,11 @@
 ---
-title: "Final-STAT380"
-author: "Ahmed alzarooni{style='background-color: yellow;'}"
-toc: true
-title-block-banner: true
-title-block-style: default
-execute: 
-  freeze: true
-  cache: true
-format:
-  #html: # comment this line to get pdf
-   pdf: 
-    fig-width: 7
-    fig-height: 7
+title: "Electrification and Poverty"
+author: "Ahmed Alzarooni"
+format: pdf
 ---
+
+---
+
 ###### Introduction
 
 In an era where technology is pivotal to economic development, access to electricity remains a critical yet unmet basic need in many Least Developed Countries (LDCs). Electrification is not merely a matter of infrastructure development; it is intricately linked to socio-economic upliftment, impacting everything from education and health to economic stability and growth. This project explores the profound relationship between electrification rates and poverty levels across LDCs, leveraging the capabilities of machine learning to uncover patterns and insights that traditional analytical methods might overlook.
