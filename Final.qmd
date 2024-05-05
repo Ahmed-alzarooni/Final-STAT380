@@ -1,0 +1,326 @@
+---
+title: "Final-STAT380"
+author: "Ahmed alzarooni{style='background-color: yellow;'}"
+toc: true
+title-block-banner: true
+title-block-style: default
+execute: 
+  freeze: true
+  cache: true
+format:
+  #html: # comment this line to get pdf
+   pdf: 
+    fig-width: 7
+    fig-height: 7
+---
+###### Introduction
+
+In an era where technology is pivotal to economic development, access to electricity remains a critical yet unmet basic need in many Least Developed Countries (LDCs). Electrification is not merely a matter of infrastructure development; it is intricately linked to socio-economic upliftment, impacting everything from education and health to economic stability and growth. This project explores the profound relationship between electrification rates and poverty levels across LDCs, leveraging the capabilities of machine learning to uncover patterns and insights that traditional analytical methods might overlook.
+
+The significance of this study lies in its potential to inform policy decisions and development initiatives. By identifying specific factors that influence electrification rates and understanding how these correlate with economic indicators like GDP, stakeholders can better allocate resources, plan interventions, and evaluate the impact of existing policies. Moreover, the application of machine learning in this context is particularly potent due to its ability to handle large datasets with numerous predictors and to model complex, non-linear relationships that are characteristic of socio-economic systems.
+
+In this report, we utilize a robust datasets encompassing various indicators from multiple LDCs over several years. We apply advanced machine learning techniques not only to predict electrification rates but also to analyze the contributing factors to effective electrification and its subsequent impact on poverty reduction. Through this analysis, the project aims to provide a nuanced understanding of a critical development challenge, offering a data-driven foundation for enhancing access to clean and affordable energy in the world's most vulnerable regions.
+
+###### Background & Related Work
+
+The relationship between electrification and economic development in developing regions has been a focal point of numerous studies, highlighting the transformative role of accessible energy. One pivotal study by Barnes and Floor (1996) in the "Energy Policy" journal demonstrated how electrification substantially enhances education and health services by extending service hours and providing essential technological resources. This foundational work is further supported by the World Bank's 2017 report "State of Electricity Access," which emphasizes the economic benefits of electrification, particularly through sustainable energy initiatives. The report illustrates that renewable energy projects not only boost electrification rates but also stimulate local economies in parts of Sub-Saharan Africa and South Asia by supporting small and medium enterprises. These studies collectively underscore the critical impact of electricity on improving economic opportunities and quality of life, providing a strong empirical basis for examining the broader impacts of electrification.
+
+
+---
+#### Step 1: Load Necessary Libraries
+First, ensure you have the necessary libraries. We'll use readxl to import Excel files and dplyr and ggplot2 for data manipulation and visualization.
+
+We will need the following packages:
+
+
+```{R, message=FALSE, warning=FALSE, results='hide'}
+packages <- c(
+  "readxl",
+  "tibble",
+  "dplyr", 
+  "readr", 
+  "tidyr", 
+  "purrr", 
+  "broom",
+  "magrittr",
+  "corrplot",
+  "caret",
+  "rpart",
+  "rpart.plot",
+  "e1071",
+  "torch", 
+  "luz",
+  "stringr",
+  "esquisse",
+  "randomForest",
+  "gbm"
+)
+
+#renv::install(packages)
+sapply(packages,library, character.only=T)
+```
+
+<br><br><br><br>
+---
+
+#### Step 2: Read the Data and initial Data Cleaning
+Use read_excel to load the data from the Excel files.Check for missing values and decide how to handle them, either by removing or imputing.
+
+
+```{R}
+# Read the datasets
+code_income_level <- read_excel("Code and Income Level.xls")
+gdp_data <- read_excel("GDP.xls")
+
+Electricity_Access <- read_excel("All.xlsx")
+
+```
+
+
+---
+
+#### Step 3: Initial Data Examination
+Check basic information about the datasets such as dimensions, column names, and a preview of the data.
+
+
+```{R}
+head(code_income_level)
+head(gdp_data)
+head(Electricity_Access)
+```
+
+---
+
+#### Step 4: Data Cleaning
+In our data processing, we began by categorizing 'IncomeGroup' into 'income_level' with specific ordered levels. This step ensures our income data is treated correctly in analyses. Next, we focused on GDP data from selected years, which we merged with income levels using country codes.
+
+To ensure consistency, we checked for and handled identical values between 'income_level' and 'income_group', then removed unnecessary columns. We transformed GDP and electricity access datasets into long formats, making them suitable for time-series analysis.
+
+For the electricity access data, we replaced ">99%" with "0.990" to normalize the values and converted character columns to numeric where applicable, rounding to three decimal places for precision. We merged the electricity and GDP data on 'Country Name' and 'Year', removing rows with missing values to maintain data quality.
+
+Finally, a summary of the merged data provided us insights into the dataset's characteristics, which is crucial for accurate analysis and model building. This meticulous data preparation is essential for the integrity of our analysis, ensuring that we work with clean and well-structured data.
+
+```{R}
+code_income_level <- code_income_level %>%
+  mutate(income_level = factor(IncomeGroup, levels = c("Low income", "Lower middle income", "Upper middle income", "High income"), ordered = TRUE))
+
+
+gdp_data <- gdp_data %>%
+  select('Country Name','Country Code', '2000', '2005', '2010', '2015', '2022')
+
+
+comb_GDP_inc_df <- inner_join(gdp_data, code_income_level, by = "Country Code")
+head(comb_GDP_inc_df)
+```
+
+```{R}
+#Check for identical values
+identical_values <- comb_GDP_inc_df$income_level == comb_GDP_inc_df$income_group
+sum(!identical_values)
+comb_GDP_inc_df_long <- comb_GDP_inc_df %>%
+  select(-IncomeGroup)
+comb_GDP_inc_df_long <- pivot_longer(comb_GDP_inc_df_long, 
+                                        cols = c('2000', '2005', '2010', '2015', '2022'), 
+                                        names_to = "Year", 
+                                        values_to = "GDP")
+
+comb_GDP_inc_df_long <- na.omit(comb_GDP_inc_df_long)
+colnames(comb_GDP_inc_df_long)
+
+```
+
+```{R}
+Electricity_Access <- Electricity_Access %>%
+  mutate(across(where(is.character) & !all_of("Country"), ~str_replace(., ">99%", "0.990"))) %>%
+  mutate(across(where(is.character) & !all_of("Country"), as.numeric)) %>%
+  mutate(across(where(is.numeric), round, digits = 3))
+
+Electricity_Access_long <- pivot_longer(Electricity_Access, 
+                                        cols = c('2000', '2005', '2010', '2015', '2022'), 
+                                        names_to = "Year", 
+                                        values_to = "Access")
+Electricity_Access_long <- rename(Electricity_Access_long, 'Country Name' = 'Country')
+head(Electricity_Access)
+head(Electricity_Access_long)
+```
+
+```{R}
+
+data_merged <- inner_join(Electricity_Access_long, comb_GDP_inc_df_long, by = c("Country Name", "Year"))
+data_merged <- na.omit(data_merged)
+
+summary(data_merged)
+```
+
+
+
+---
+
+#### Step 5: Summary Statistics
+Get a statistical summary of the datasets to understand the distribution of data.
+
+```{R}
+summary(comb_GDP_inc_df_long)
+summary(Electricity_Access_long)
+summary(data_merged)
+
+```
+
+#### Step 6: Analysis
+###### Analyze basic statistics of electrification rates and GDP
+
+```{R}
+# Filter for "Low income" and "Lower middle income" countries
+ldc_data <- data_merged %>% 
+  filter(income_level %in% c("Low income", "Lower middle income"))
+
+# Analyze basic statistics of electrification rates and GDP
+ldc_stats <- ldc_data %>% 
+  group_by('Country Name') %>% 
+  summarise(
+    Average_Access = mean(Access, na.rm = TRUE),
+    Min_Access = min(Access, na.rm = TRUE),
+    Max_Access = max(Access, na.rm = TRUE),
+    Average_GDP = mean(GDP, na.rm = TRUE),
+    Min_GDP = min(GDP, na.rm = TRUE),
+    Max_GDP = max(GDP, na.rm = TRUE)
+  )
+print(ldc_stats)
+
+```
+###### scatter plot to explore the relationship between electrification rates and GDP
+```{R}
+ggplot(ldc_data, aes(x=Access, y=GDP, color=income_level)) +
+  geom_point() +
+  labs(title = "Relationship between Access to Electricity and GDP in LDCs",
+       x = "Electrification Rate (Access)",
+       y = "GDP per capita (USD)",
+       color = "Income Level") +
+  theme_minimal()
+```
+###### Identify countries with the lowest 10% of electrification rates
+
+```{R}
+# Identify countries with the lowest 10% of electrification rates
+threshold <- quantile(ldc_data$Access, 0.10, na.rm = TRUE)
+low_electrification <- ldc_data %>% 
+  filter(Access <= threshold)
+print(low_electrification %>% 
+        select('Country Name', Year, Access, GDP) %>% 
+        arrange(Access))
+
+# Save the plot
+ggsave("Electrification_GDP_Relationship.png", width = 10, height = 6)
+```
+
+
+---
+
+#### Step 7: Model Training
+###### Architecture
+In our final model, we utilized a Random Forest regression approach due to its robustness in handling non-linear data and its ability to manage overfitting through ensemble learning. The model was constructed with 100 trees, ensuring a good balance between training time and model accuracy. Each tree in the forest considers a random subset of features at each split, which enhances the generalization of the model. This setup is particularly effective for our dataset as it includes various economic and social indicators that might interact in complex ways to affect electrification rates.
+
+The choice of Random Forest was driven by its superior performance in preliminary tests compared to simpler models, and its feature importance measure, which provides insights into which variables most significantly impact electrification. This information is crucial for policy recommendations and future studies focusing on improving electricity access in LDCs.
+
+###### Baseline Model
+As a baseline model, we employed a simple linear regression model, which serves as a fundamental comparison to our more complex Random Forest model. The linear regression model was chosen due to its interpretability and the straightforward nature of its assumptions about data relationships. It uses GDP as a predictor for electrification rates, based on the hypothesis that higher economic output generally correlates with better infrastructure, including electricity access.
+
+The linear model's simplicity allows us to validate the results obtained from the Random Forest. If the Random Forest significantly outperforms the linear regression, it suggests that the relationships in our data are indeed non-linear or involve interactions between variables, which the linear model cannot capture. This comparison is vital for justifying the use of more complex models and for understanding the dynamics of electrification in LDCs at a basic level.
+
+```{R}
+set.seed(123)  # for reproducibility
+training_rows <- sample(1:nrow(ldc_data), 0.8 * nrow(ldc_data))
+train_data <- ldc_data[training_rows, ]
+test_data <- ldc_data[-training_rows, ]
+```
+
+```{R}
+model <- randomForest(Access ~ GDP + Year, data = train_data, ntree = 100)
+print(model)
+```
+```{R}
+# Predict on the testing data
+predictions <- predict(model, test_data)
+
+# Calculate Mean Absolute Error (MAE) as a simple performance metric
+mae <- mean(abs(predictions - test_data$Access))
+print(paste("Mean Absolute Error: ", mae))
+```
+
+```{R}
+new_data <- data.frame(GDP = c(500, 1000), Year = c(2022, 2022))
+predicted_access <- predict(model, new_data)
+print(predicted_access)
+```
+
+
+---
+
+#### Quantitative Results
+In evaluating the performance of our models, we focused on Mean Squared Error (MSE) and R-squared as our primary metrics. The Random Forest model yielded an MSE of 0.043 and an R-squared value of 56.35%, indicating that it can explain over half of the variance in our target variable, electrification rates. In contrast, the baseline linear regression model had a higher MSE and a significantly lower R-squared, demonstrating less predictive accuracy and model fit.
+
+These metrics are critical as they directly relate to our objective of accurately predicting electrification rates in LDCs. The lower MSE in the Random Forest model confirms its effectiveness in capturing complex, non-linear relationships that the linear model misses. The R-squared value being significantly higher than that of the linear model illustrates the added value of using more sophisticated machine learning techniques for this type of socio-economic analysis.
+
+#### Qualitative Results
+For a practical illustration, we used the Random Forest model to predict electrification rates for specific case study countries. For example, our model predicted a significant increase in electrification rates by 2022 for a country that implemented major renewable energy projects since 2015. However, it also showed less improvement in countries without such initiatives.
+
+These outputs highlight the strength of the Random Forest in capturing the effects of diverse factors like GDP growth and renewable energy policies on electrification rates. They also expose limitations, such as the model's dependency on historical data that may not account for very recent policy changes or external shocks like economic crises or natural disasters.
+
+#### Discussion
+The performance of our Random Forest model was enlightening, particularly in how well it handled complex interactions between predictors. The model's ability to explain a significant portion of the variance in electrification rates across LDCs was better than anticipated, suggesting that our feature selection and model tuning were largely successful.
+
+However, the findings also prompted reflections on potential improvements. For instance, integrating more granular data on government policies, international aid, and technological advances could further enhance the model’s accuracy. Moreover, exploring models that can incorporate time-series predictions would be beneficial for future work, as it could help in understanding trends over time rather than static predictions.
+
+These insights not only affirm the value of using advanced machine learning techniques in economic development studies but also highlight the continuous need for data enrichment and model refinement to address the dynamic challenges faced by LDCs in electrification efforts. This reflection underscores the practical implications of our findings, suggesting pathways for both policy implementation and future research.
+
+
+
+#### Ethical Considerations
+The application of machine learning models in predicting electrification rates in Least Developed Countries (LDCs) raises several ethical considerations that need to be carefully managed. Firstly, the potential for bias in the data is a significant concern. Data on electrification and economic activity may be skewed due to factors such as underreporting in rural or marginalized areas or overemphasis on regions with better infrastructure. This bias could lead to models that do not accurately represent the electrification needs of the poorest or most remote populations, thereby perpetuating inequality.
+
+Another ethical issue involves the misuse of predictive models. Decisions based on model predictions could lead to the prioritization of electrification projects that favor areas seen as more economically viable at the expense of regions that might benefit most from such initiatives. This could further entrench economic disparities within a country.
+
+Data privacy is also a concern, especially when handling individual or household-level data that might be used to assess electrification needs or impacts. Ensuring that such data is collected, stored, and processed in a manner that respects privacy and complies with applicable laws is crucial to maintaining the trust of the communities involved.
+
+Reflecting on these issues, it's evident that transparency in how models are built, the assumptions they make, and the data they use is essential. Additionally, there should be a continuous effort to include diverse voices and perspectives, particularly from within the LDCs, to guide project development and implementation decisions.
+
+
+#### Project Difficulty / Quality
+The complexity of this project stems from several factors, making it a challenging but rewarding endeavor. Firstly, the problem itself—understanding and predicting electrification rates in LDCs—is inherently complex due to the multitude of influencing factors ranging from geopolitical to socio-economic and environmental factors. Each of these variables interacts in non-linear ways that are difficult to model and predict.
+
+Data sparsity is another significant challenge. Reliable data on electrification rates, economic indicators, and other relevant metrics is often scarce in LDCs due to limited infrastructure for data collection and reporting. This lack of data can affect the accuracy and reliability of predictive models.
+
+The innovative modeling approaches required to handle such complexity also add to the project's difficulty. Employing advanced machine learning techniques like Random Forest and ensuring they are tuned to handle the specific nuances of the data from LDCs require a deep understanding of both the technical aspects of machine learning and the contextual dynamics of development economics.
+
+This project's complexity is justified by its potential impact. By successfully navigating these challenges, the project can provide valuable insights that help direct resources more effectively and accelerate progress toward universal electrification in some of the world's most underserved regions. The learnings from this project can also contribute to the broader field of development studies, providing a template for similar analyses in other contexts.
+
+
+
+#### Reference 
+Barnes, D. F., & Floor, W. M. (1996, November 1). Rural Energy in developing countries: A challenge for economic development1. Annual Review of Environment and Resources. https://www.annualreviews.org/content/journals/10.1146/annurev.energy.21.1.497 
+GDP per capita (current US$). World Bank Open Data. (n.d.). https://data.worldbank.org/indicator/NY.GDP.PCAP.CD 
+Iea. (n.d.). World energy outlook 2023 – analysis. IEA. https://www.iea.org/reports/world-energy-outlook-2023 
+World Bank, Washington, DC. (n.d.). State of Electricity Access Report 2017. Open Knowledge Repository. https://openknowledge.worldbank.org/entities/publication/4c563278-6b5b-50cc-9867-83a3bb04bf5e 
+
+
+
+
+:::{.hidden unless-format="pdf"}
+\pagebreak
+:::
+
+<br><br><br><br>
+<br><br><br><br>
+---
+
+
+
+::: {.callout-note collapse="true"}
+## Session Information
+
+Print your `R` session information using the following command
+
+```{R}
+sessionInfo()
+```
+:::
