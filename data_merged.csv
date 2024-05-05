@@ -1,0 +1,436 @@
+"","Country Name","Year","Access","Country Code","income_level","GDP"
+"1","China","2000",0.986,"CHN","Upper middle income",959.360431340438
+"2","China","2005",0.99,"CHN","Upper middle income",1753.41419162417
+"3","China","2010",0.99,"CHN","Upper middle income",4550.47394361131
+"4","China","2015",0.99,"CHN","Upper middle income",8016.44559491162
+"5","China","2022",0.99,"CHN","Upper middle income",12720.2163182363
+"6","India","2000",0.43,"IND","Lower middle income",442.034778911498
+"7","India","2005",0.577,"IND","Lower middle income",710.509344848758
+"8","India","2010",0.679,"IND","Lower middle income",1350.63447029491
+"9","India","2015",0.789,"IND","Lower middle income",1590.17433135955
+"10","India","2022",0.99,"IND","Lower middle income",2410.88802070689
+"11","Indonesia","2000",0.534,"IDN","Upper middle income",770.865351580294
+"12","Indonesia","2005",0.561,"IDN","Upper middle income",1249.39769359418
+"13","Indonesia","2010",0.671,"IDN","Upper middle income",3094.44307866403
+"14","Indonesia","2015",0.883,"IDN","Upper middle income",3322.58167895444
+"15","Indonesia","2022",0.99,"IDN","Upper middle income",4787.99930771921
+"16","Cambodia","2000",0.043,"KHM","Lower middle income",301.516598526092
+"17","Cambodia","2005",0.118,"KHM","Lower middle income",475.069394255055
+"18","Cambodia","2010",0.229,"KHM","Lower middle income",782.695738595564
+"19","Cambodia","2015",0.52,"KHM","Lower middle income",1170.74281578643
+"20","Cambodia","2022",0.96,"KHM","Lower middle income",1759.60802346044
+"21","Malaysia","2000",0.969,"MYS","Upper middle income",4087.56259349384
+"22","Malaysia","2005",0.981,"MYS","Upper middle income",5536.83748306949
+"23","Malaysia","2010",0.99,"MYS","Upper middle income",8880.14580454109
+"24","Malaysia","2015",0.99,"MYS","Upper middle income",9699.60046342736
+"25","Malaysia","2022",0.99,"MYS","Upper middle income",11993.1876132994
+"26","Myanmar","2000",0.05,"MMR","Lower middle income",195.550995666386
+"27","Myanmar","2005",0.134,"MMR","Lower middle income",251.170356995896
+"28","Myanmar","2010",0.24,"MMR","Lower middle income",1003.03345506033
+"29","Myanmar","2015",0.3,"MMR","Lower middle income",1159.34020074533
+"30","Myanmar","2022",0.636,"MMR","Lower middle income",1149.21121846296
+"31","Philippines","2000",0.737,"PHL","Lower middle income",1073.26443619332
+"32","Philippines","2005",0.767,"PHL","Lower middle income",1245.2865836997
+"33","Philippines","2010",0.797,"PHL","Lower middle income",2201.77682813479
+"34","Philippines","2015",0.896,"PHL","Lower middle income",2974.29691673713
+"35","Philippines","2022",0.987,"PHL","Lower middle income",3498.5098055874
+"36","Singapore","2000",0.99,"SGP","High income",23852.8389514753
+"37","Singapore","2005",0.99,"SGP","High income",29961.3172812732
+"38","Singapore","2010",0.99,"SGP","High income",47236.683084953
+"39","Singapore","2015",0.99,"SGP","High income",55645.6068614606
+"40","Singapore","2022",0.99,"SGP","High income",82807.6290622897
+"41","Thailand","2000",0.821,"THA","Upper middle income",2004.1070589103
+"42","Thailand","2005",0.99,"THA","Upper middle income",2876.24577293139
+"43","Thailand","2010",0.99,"THA","Upper middle income",4996.37209760091
+"44","Thailand","2015",0.99,"THA","Upper middle income",5708.79409105798
+"45","Thailand","2022",0.99,"THA","Upper middle income",6909.9562847948
+"46","Bangladesh","2000",0.204,"BGD","Lower middle income",413.100185264402
+"47","Bangladesh","2005",0.338,"BGD","Lower middle income",492.808648889577
+"48","Bangladesh","2010",0.465,"BGD","Lower middle income",776.859576940281
+"49","Bangladesh","2015",0.75,"BGD","Lower middle income",1236.00439239816
+"50","Bangladesh","2022",0.99,"BGD","Lower middle income",2688.30550090738
+"51","Mongolia","2000",0.9,"MNG","Lower middle income",463.853881903101
+"52","Mongolia","2005",0.651,"MNG","Lower middle income",986.018040837747
+"53","Mongolia","2010",0.862,"MNG","Lower middle income",2660.28817507398
+"54","Mongolia","2015",0.907,"MNG","Lower middle income",3919.35121343969
+"55","Mongolia","2022",0.902,"MNG","Lower middle income",5045.50470031666
+"56","Nepal","2000",0.193,"NPL","Lower middle income",223.711891850609
+"57","Nepal","2005",0.459,"NPL","Lower middle income",309.310420053588
+"58","Nepal","2010",0.713,"NPL","Lower middle income",589.165434913038
+"59","Nepal","2015",0.877,"NPL","Lower middle income",882.307663444541
+"60","Nepal","2022",0.953,"NPL","Lower middle income",1336.54604729847
+"61","Pakistan","2000",0.529,"PAK","Lower middle income",644.457156981743
+"62","Pakistan","2005",0.557,"PAK","Lower middle income",832.751137517234
+"63","Pakistan","2010",0.674,"PAK","Lower middle income",1011.59718017727
+"64","Pakistan","2015",0.73,"PAK","Lower middle income",1421.83527830089
+"65","Pakistan","2022",0.788,"PAK","Lower middle income",1588.8798287911
+"66","Sri Lanka","2000",0.62,"LKA","Lower middle income",869.753488572239
+"67","Sri Lanka","2005",0.681,"LKA","Lower middle income",1240.51831220036
+"68","Sri Lanka","2010",0.766,"LKA","Lower middle income",2836.97410911231
+"69","Sri Lanka","2015",0.986,"LKA","Lower middle income",3990.35311739446
+"70","Sri Lanka","2022",0.99,"LKA","Lower middle income",3354.38340757565
+"71","Argentina","2000",0.954,"ARG","Upper middle income",7666.51783423783
+"72","Argentina","2005",0.971,"ARG","Upper middle income",5086.62776073134
+"73","Argentina","2010",0.988,"ARG","Upper middle income",10385.9644319555
+"74","Argentina","2015",0.99,"ARG","Upper middle income",13789.060424772
+"75","Argentina","2022",0.99,"ARG","Upper middle income",13650.6046294524
+"76","Bolivia","2000",0.553,"BOL","Lower middle income",977.329417675872
+"77","Bolivia","2005",0.649,"BOL","Lower middle income",1018.31372502967
+"78","Bolivia","2010",0.789,"BOL","Lower middle income",1922.05857050664
+"79","Bolivia","2015",0.876,"BOL","Lower middle income",2975.64881143063
+"80","Bolivia","2022",0.944,"BOL","Lower middle income",3600.12163486427
+"81","Brazil","2000",0.945,"BRA","Upper middle income",3726.81166909716
+"82","Brazil","2005",0.966,"BRA","Upper middle income",4773.2685513226
+"83","Brazil","2010",0.987,"BRA","Upper middle income",11249.2918904352
+"84","Brazil","2015",0.99,"BRA","Upper middle income",8783.2154236384
+"85","Brazil","2022",0.99,"BRA","Upper middle income",8917.67491057495
+"86","Colombia","2000",0.874,"COL","Upper middle income",2546.85021359809
+"87","Colombia","2005",0.918,"COL","Upper middle income",3448.5383230859
+"88","Colombia","2010",0.955,"COL","Upper middle income",6392.75802564032
+"89","Colombia","2015",0.97,"COL","Upper middle income",6228.65162186089
+"90","Colombia","2022",0.969,"COL","Upper middle income",6624.16539269075
+"91","Costa Rica","2000",0.971,"CRI","Upper middle income",3773.03379319679
+"92","Costa Rica","2005",0.981,"CRI","Upper middle income",4643.45856992587
+"93","Costa Rica","2010",0.99,"CRI","Upper middle income",8147.24398493375
+"94","Costa Rica","2015",0.99,"CRI","Upper middle income",11529.9551730192
+"95","Costa Rica","2022",0.99,"CRI","Upper middle income",13365.3563992692
+"96","Cuba","2000",0.943,"CUB","Upper middle income",2752.20378269319
+"97","Cuba","2005",0.958,"CUB","Upper middle income",3791.87300608904
+"98","Cuba","2010",0.972,"CUB","Upper middle income",5275.53260105122
+"99","Cuba","2015",0.99,"CUB","Upper middle income",7683.74025365669
+"100","Dominican Republic","2000",0.918,"DOM","Upper middle income",2845.84655316676
+"101","Dominican Republic","2005",0.94,"DOM","Upper middle income",3903.8152066628
+"102","Dominican Republic","2010",0.957,"DOM","Upper middle income",5509.56803417837
+"103","Dominican Republic","2015",0.97,"DOM","Upper middle income",6838.93674590634
+"104","Dominican Republic","2022",0.979,"DOM","Upper middle income",10111.2457110261
+"105","Ecuador","2000",0.889,"ECU","Upper middle income",1451.53088517998
+"106","Ecuador","2005",0.923,"ECU","Upper middle income",3014.3100093159
+"107","Ecuador","2010",0.934,"ECU","Upper middle income",4640.24634437845
+"108","Ecuador","2015",0.972,"ECU","Upper middle income",6130.58667556768
+"109","Ecuador","2022",0.973,"ECU","Upper middle income",6391.28248430643
+"110","El Salvador","2000",0.801,"SLV","Upper middle income",1977.84061443838
+"111","El Salvador","2005",0.875,"SLV","Upper middle income",2434.32353117029
+"112","El Salvador","2010",0.916,"SLV","Upper middle income",3017.3073947577
+"113","El Salvador","2015",0.954,"SLV","Upper middle income",3761.51368000275
+"114","El Salvador","2022",0.979,"SLV","Upper middle income",5127.32166823012
+"115","Guatemala","2000",0.743,"GTM","Upper middle income",1664.30774802438
+"116","Guatemala","2005",0.84,"GTM","Upper middle income",2068.48820631493
+"117","Guatemala","2010",0.827,"GTM","Upper middle income",2852.55759284808
+"118","Guatemala","2015",0.92,"GTM","Upper middle income",3994.62908519019
+"119","Guatemala","2022",0.893,"GTM","Upper middle income",5473.20856444589
+"120","Haiti","2000",0.337,"HTI","Lower middle income",814.997919701067
+"121","Haiti","2005",0.346,"HTI","Lower middle income",771.535002677952
+"122","Haiti","2010",0.371,"HTI","Lower middle income",1204.86205533079
+"123","Haiti","2015",0.408,"HTI","Lower middle income",1405.71478574216
+"124","Haiti","2022",0.469,"HTI","Lower middle income",1748.25713229469
+"125","Honduras","2000",0.431,"HND","Lower middle income",1079.6056663087
+"126","Honduras","2005",0.523,"HND","Lower middle income",1289.82311409217
+"127","Honduras","2010",0.639,"HND","Lower middle income",1874.27170372599
+"128","Honduras","2015",0.74,"HND","Lower middle income",2257.22528369354
+"129","Honduras","2022",0.852,"HND","Lower middle income",3040.17304596842
+"130","Jamaica","2000",0.846,"JAM","Upper middle income",3447.30389648976
+"131","Jamaica","2005",0.885,"JAM","Upper middle income",4200.38895442653
+"132","Jamaica","2010",0.927,"JAM","Upper middle income",4835.79108651148
+"133","Jamaica","2015",0.973,"JAM","Upper middle income",5077.5509836244
+"134","Jamaica","2022",0.975,"JAM","Upper middle income",6047.2164567796
+"135","Nicaragua","2000",0.491,"NIC","Lower middle income",996.89785199474
+"136","Nicaragua","2005",0.53,"NIC","Lower middle income",1158.88129036183
+"137","Nicaragua","2010",0.698,"NIC","Lower middle income",1495.73375442812
+"138","Nicaragua","2015",0.853,"NIC","Lower middle income",2025.32143224265
+"139","Nicaragua","2022",0.99,"NIC","Lower middle income",2255.42599496242
+"140","Panama","2000",0.761,"PAN","High income",4099.00653989315
+"141","Panama","2005",0.858,"PAN","High income",4953.12997978141
+"142","Panama","2010",0.881,"PAN","High income",8124.55830734871
+"143","Panama","2015",0.939,"PAN","High income",13669.5594424097
+"144","Panama","2022",0.953,"PAN","High income",17357.628633794
+"145","Paraguay","2000",0.821,"PRY","Upper middle income",1728.34074341006
+"146","Paraguay","2005",0.945,"PRY","Upper middle income",1960.51476554933
+"147","Paraguay","2010",0.975,"PRY","Upper middle income",4725.72634101583
+"148","Paraguay","2015",0.99,"PRY","Upper middle income",5861.40189546648
+"149","Paraguay","2022",0.99,"PRY","Upper middle income",6153.05565720044
+"150","Peru","2000",0.685,"PER","Upper middle income",1941.318259717
+"151","Peru","2005",0.728,"PER","Upper middle income",2702.23770075461
+"152","Peru","2010",0.82,"PER","Upper middle income",5047.2046433225
+"153","Peru","2015",0.899,"PER","Upper middle income",6180.11926810233
+"154","Peru","2022",0.94,"PER","Upper middle income",7125.82993135746
+"155","Trinidad and Tobago","2000",0.913,"TTO","High income",6120.94270389706
+"156","Trinidad and Tobago","2005",0.944,"TTO","High income",11673.7815403674
+"157","Trinidad and Tobago","2010",0.963,"TTO","High income",15711.5587055513
+"158","Trinidad and Tobago","2015",0.977,"TTO","High income",18508.770502876
+"159","Trinidad and Tobago","2022",0.99,"TTO","High income",19629.4653400829
+"160","Uruguay","2000",0.963,"URY","High income",6932.47813396337
+"161","Uruguay","2005",0.974,"URY","High income",5233.45717058668
+"162","Uruguay","2010",0.99,"URY","High income",12512.5941268441
+"163","Uruguay","2015",0.99,"URY","High income",16950.7531694816
+"164","Uruguay","2022",0.99,"URY","High income",20795.0423535553
+"165","Algeria","2000",0.98,"DZA","Lower middle income",1780.37606280604
+"166","Algeria","2005",0.983,"DZA","Lower middle income",3131.32818989681
+"167","Algeria","2010",0.99,"DZA","Lower middle income",4495.92147563024
+"168","Algeria","2015",0.99,"DZA","Lower middle income",4197.41998491398
+"169","Algeria","2022",0.99,"DZA","Lower middle income",4342.63796796522
+"170","Libya","2000",0.99,"LBY","Upper middle income",7424.35347156722
+"171","Libya","2005",0.99,"LBY","Upper middle income",8108.05260794233
+"172","Libya","2010",0.99,"LBY","Upper middle income",11611.3585954261
+"173","Libya","2015",0.99,"LBY","Upper middle income",7867.5157311439
+"174","Libya","2022",0.99,"LBY","Upper middle income",6716.09598462328
+"175","Morocco","2000",0.716,"MAR","Lower middle income",1492.37707519531
+"176","Morocco","2005",0.904,"MAR","Lower middle income",2237.576171875
+"177","Morocco","2010",0.987,"MAR","Lower middle income",3067.85180664063
+"178","Morocco","2015",0.99,"MAR","Lower middle income",3139.22827148438
+"179","Morocco","2022",0.99,"MAR","Lower middle income",3441.99145507813
+"180","Tunisia","2000",0.946,"TUN","Lower middle income",2170.50867078119
+"181","Tunisia","2005",0.99,"TUN","Lower middle income",3106.57663000034
+"182","Tunisia","2010",0.99,"TUN","Lower middle income",4241.01190951928
+"183","Tunisia","2015",0.99,"TUN","Lower middle income",3960.92484913663
+"184","Tunisia","2022",0.99,"TUN","Lower middle income",3747.41939149283
+"185","Cameroon","2000",0.458,"CMR","Lower middle income",700.16323623489
+"186","Cameroon","2005",0.475,"CMR","Lower middle income",1129.35797897075
+"187","Cameroon","2010",0.523,"CMR","Lower middle income",1383.81386476157
+"188","Cameroon","2015",0.621,"CMR","Lower middle income",1399.67533591995
+"189","Cameroon","2022",0.624,"CMR","Lower middle income",1563.48894034459
+"190","Central African Republic","2000",0.01,"CAF","Low income",243.877580075298
+"191","Central African Republic","2005",0.018,"CAF","Low income",317.877677935844
+"192","Central African Republic","2010",0.023,"CAF","Low income",459.776981833241
+"193","Central African Republic","2015",0.03,"CAF","Low income",351.879754769554
+"194","Central African Republic","2022",0.061,"CAF","Low income",427.058096191269
+"195","Chad","2000",0.02,"TCD","Low income",168.117658247775
+"196","Chad","2005",0.035,"TCD","Low income",664.59765601918
+"197","Chad","2010",0.037,"TCD","Low income",896.876704620394
+"198","Chad","2015",0.077,"TCD","Low income",774.411603124119
+"199","Chad","2022",0.078,"TCD","Low income",716.804381134584
+"200","Equatorial Guinea","2000",0.65,"GNQ","Upper middle income",1527.05637771592
+"201","Equatorial Guinea","2005",0.655,"GNQ","Upper middle income",9502.85881614782
+"202","Equatorial Guinea","2010",0.66,"GNQ","Upper middle income",14905.5145764646
+"203","Equatorial Guinea","2015",0.665,"GNQ","Upper middle income",9788.98380398528
+"204","Equatorial Guinea","2022",0.657,"GNQ","Upper middle income",7182.26538205027
+"205","Gabon","2000",0.31,"GAB","Upper middle income",3991.15715141003
+"206","Gabon","2005",0.455,"GAB","Upper middle income",6570.96326530919
+"207","Gabon","2010",0.6,"GAB","Upper middle income",8399.59734808121
+"208","Gabon","2015",0.819,"GAB","Upper middle income",7090.45463394942
+"209","Gabon","2022",0.933,"GAB","Upper middle income",8820.34733682316
+"210","Burundi","2000",0.04,"BDI","Low income",138.004617225366
+"211","Burundi","2005",0.047,"BDI","Low income",151.188541005904
+"212","Burundi","2010",0.053,"BDI","Low income",222.660583208376
+"213","Burundi","2015",0.091,"BDI","Low income",289.359627206129
+"214","Burundi","2022",0.101,"BDI","Low income",259.025031363515
+"215","Djibouti","2000",0.46,"DJI","Lower middle income",742.865697154312
+"216","Djibouti","2005",0.478,"DJI","Lower middle income",852.890188282475
+"217","Djibouti","2010",0.497,"DJI","Lower middle income",1227.82085311429
+"218","Djibouti","2015",0.42,"DJI","Lower middle income",2409.31190224284
+"219","Djibouti","2022",0.42,"DJI","Lower middle income",3136.11276804873
+"220","Eritrea","2000",0.17,"ERI","Low income",295.19692403481
+"221","Eritrea","2005",0.245,"ERI","Low income",387.898540350192
+"222","Eritrea","2010",0.32,"ERI","Low income",504.972460176652
+"223","Ethiopia","2000",0.047,"ETH","Low income",122.961659681414
+"224","Ethiopia","2005",0.161,"ETH","Low income",160.076791772058
+"225","Ethiopia","2010",0.219,"ETH","Low income",335.438495270931
+"226","Ethiopia","2015",0.336,"ETH","Low income",630.312619383054
+"227","Ethiopia","2022",0.486,"ETH","Low income",1027.58591095964
+"228","Kenya","2000",0.11,"KEN","Lower middle income",411.821352113869
+"229","Kenya","2005",0.21,"KEN","Lower middle income",522.776840246892
+"230","Kenya","2010",0.3,"KEN","Lower middle income",1093.63962367926
+"231","Kenya","2015",0.47,"KEN","Lower middle income",1496.65357260021
+"232","Kenya","2022",0.75,"KEN","Lower middle income",2099.30193826696
+"233","Rwanda","2000",0.062,"RWA","Low income",255.111967825778
+"234","Rwanda","2005",0.078,"RWA","Low income",325.050066322768
+"235","Rwanda","2010",0.097,"RWA","Low income",594.160254467019
+"236","Rwanda","2015",0.264,"RWA","Low income",733.887472832132
+"237","Rwanda","2022",0.61,"RWA","Low income",966.232071361993
+"238","Somalia","2015",0.29,"SOM","Low income",507.482915466996
+"239","Somalia","2022",0.348,"SOM","Low income",592.103121972088
+"240","South Sudan","2015",0.05,"SSD","Low income",1071.77776475545
+"241","Sudan","2000",0.3,"SDN","Low income",378.157501220703
+"242","Sudan","2005",0.312,"SDN","Low income",945.689697265625
+"243","Sudan","2010",0.359,"SDN","Low income",1706.41491699219
+"244","Sudan","2015",0.43,"SDN","Low income",2226.40942382813
+"245","Sudan","2022",0.469,"SDN","Low income",1102.146484375
+"246","Uganda","2000",0.037,"UGA","Low income",257.829605739453
+"247","Uganda","2005",0.097,"UGA","Low income",330.602854382722
+"248","Uganda","2010",0.138,"UGA","Low income",824.73767112214
+"249","Uganda","2015",0.185,"UGA","Low income",864.180059289672
+"250","Uganda","2022",0.309,"UGA","Low income",964.39586947645
+"251","Nigeria","2000",0.411,"NGA","Lower middle income",563.047086217561
+"252","Nigeria","2005",0.482,"NGA","Lower middle income",1250.40691277354
+"253","Nigeria","2010",0.517,"NGA","Lower middle income",2280.11128904338
+"254","Nigeria","2015",0.583,"NGA","Lower middle income",2679.5542234874
+"255","Nigeria","2022",0.734,"NGA","Lower middle income",2162.63373428577
+"256","Benin","2000",0.163,"BEN","Lower middle income",502.997981069672
+"257","Benin","2005",0.227,"BEN","Lower middle income",805.904685277445
+"258","Benin","2010",0.257,"BEN","Lower middle income",1009.48949478478
+"259","Benin","2015",0.277,"BEN","Lower middle income",1041.65252315983
+"260","Benin","2022",0.38,"BEN","Lower middle income",1302.85103626824
+"261","Cote d'Ivoire","2000",0.5,"CIV","Lower middle income",986.777352839567
+"262","Cote d'Ivoire","2005",0.515,"CIV","Lower middle income",1267.08731129988
+"263","Cote d'Ivoire","2010",0.589,"CIV","Lower middle income",1654.17795876208
+"264","Cote d'Ivoire","2015",0.628,"CIV","Lower middle income",1941.58189772117
+"265","Cote d'Ivoire","2022",0.802,"CIV","Lower middle income",2486.41219394248
+"266","Ghana","2000",0.45,"GHA","Lower middle income",253.380293175761
+"267","Ghana","2005",0.515,"GHA","Lower middle income",477.601092763442
+"268","Ghana","2010",0.649,"GHA","Lower middle income",1258.96419689048
+"269","Ghana","2015",0.832,"GHA","Lower middle income",1711.27131722255
+"270","Ghana","2022",0.886,"GHA","Lower middle income",2203.55893518303
+"271","Senegal","2000",0.313,"SEN","Lower middle income",619.642123524918
+"272","Senegal","2005",0.419,"SEN","Lower middle income",1003.18719302616
+"273","Senegal","2010",0.57,"SEN","Lower middle income",1286.60496647046
+"274","Senegal","2015",0.62,"SEN","Lower middle income",1238.12639978389
+"275","Senegal","2022",0.754,"SEN","Lower middle income",1598.72643336012
+"276","Togo","2000",0.09,"TGO","Low income",297.899506747022
+"277","Togo","2005",0.176,"TGO","Low income",399.44747774864
+"278","Togo","2010",0.222,"TGO","Low income",722.229399952606
+"279","Togo","2015",0.331,"TGO","Low income",770.143379256632
+"280","Togo","2022",0.475,"TGO","Low income",942.649901579536
+"281","Burkina Faso","2000",0.13,"BFA","Low income",249.802075690488
+"282","Burkina Faso","2005",0.085,"BFA","Low income",442.944430628899
+"283","Burkina Faso","2010",0.136,"BFA","Low income",627.270395707064
+"284","Burkina Faso","2015",0.188,"BFA","Low income",632.12668582235
+"285","Burkina Faso","2022",0.213,"BFA","Low income",830.03715033429
+"286","Guinea","2000",0.16,"GIN","Lower middle income",359.286670018273
+"287","Guinea","2005",0.202,"GIN","Lower middle income",321.338633269515
+"288","Guinea","2010",0.245,"GIN","Lower middle income",667.281601897555
+"289","Guinea","2015",0.377,"GIN","Lower middle income",756.425589810936
+"290","Guinea","2022",0.55,"GIN","Lower middle income",1515.16794777584
+"291","Guinea-Bissau","2000",0.1,"GNB","Low income",301.495570983905
+"292","Guinea-Bissau","2005",0.108,"GNB","Low income",425.471888739684
+"293","Guinea-Bissau","2010",0.119,"GNB","Low income",542.284101222819
+"294","Guinea-Bissau","2015",0.177,"GNB","Low income",585.957012587988
+"295","Guinea-Bissau","2022",0.411,"GNB","Low income",775.828965745365
+"296","Liberia","2010",0.03,"LBR","Low income",497.020365397034
+"297","Liberia","2015",0.16,"LBR","Low income",699.662946853965
+"298","Liberia","2022",0.295,"LBR","Low income",754.532842914744
+"299","Mali","2000",0.12,"MLI","Low income",263.498384244829
+"300","Mali","2005",0.143,"MLI","Low income",473.995046803835
+"301","Mali","2010",0.271,"MLI","Low income",688.327865858558
+"302","Mali","2015",0.36,"MLI","Low income",723.504204947663
+"303","Mali","2022",0.534,"MLI","Low income",833.297255093071
+"304","Mauritania","2000",0.222,"MRT","Lower middle income",660.303861060692
+"305","Mauritania","2005",0.18,"MRT","Lower middle income",974.657585946703
+"306","Mauritania","2010",0.33,"MRT","Lower middle income",1646.13042756814
+"307","Mauritania","2015",0.4,"MRT","Lower middle income",1562.72683648828
+"308","Mauritania","2022",0.482,"MRT","Lower middle income",2065.15551570106
+"309","Niger","2000",0.07,"NER","Low income",192.877725789359
+"310","Niger","2005",0.078,"NER","Low income",316.365647620285
+"311","Niger","2010",0.086,"NER","Low income",471.61268796898
+"312","Niger","2015",0.106,"NER","Low income",481.111301105002
+"313","Niger","2022",0.197,"NER","Low income",585.404929171026
+"314","Sao Tome and Principe","2005",0.55,"STP","Lower middle income",843.955111272836
+"315","Sao Tome and Principe","2010",0.569,"STP","Lower middle income",1043.28142666295
+"316","Sao Tome and Principe","2015",0.593,"STP","Lower middle income",1292.73305546523
+"317","Sao Tome and Principe","2022",0.785,"STP","Lower middle income",2386.6961758184
+"318","Sierra Leone","2000",0.09,"SLE","Low income",138.713941615327
+"319","Sierra Leone","2005",0.106,"SLE","Low income",286.28590628988
+"320","Sierra Leone","2010",0.121,"SLE","Low income",400.540743708337
+"321","Sierra Leone","2015",0.195,"SLE","Low income",581.293411814954
+"322","Sierra Leone","2022",0.249,"SLE","Low income",475.795727844622
+"323","Angola","2000",0.12,"AGO","Lower middle income",556.884243549684
+"324","Angola","2005",0.172,"AGO","Lower middle income",1900.72381643441
+"325","Angola","2010",0.272,"AGO","Lower middle income",3586.66368031755
+"326","Angola","2015",0.36,"AGO","Lower middle income",3217.33924430561
+"327","Angola","2022",0.471,"AGO","Lower middle income",3000.44423053173
+"328","Botswana","2000",0.22,"BWA","Upper middle income",3351.6965168531
+"329","Botswana","2005",0.399,"BWA","Upper middle income",5240.316159068
+"330","Botswana","2010",0.454,"BWA","Upper middle income",6041.73205119653
+"331","Botswana","2015",0.531,"BWA","Upper middle income",5869.73757890628
+"332","Botswana","2022",0.615,"BWA","Upper middle income",7738.87880407803
+"333","Comoros","2000",0.3,"COM","Lower middle income",654.18043075023
+"334","Comoros","2005",0.35,"COM","Lower middle income",1103.19541672121
+"335","Comoros","2010",0.401,"COM","Lower middle income",1384.06328381602
+"336","Comoros","2015",0.693,"COM","Lower middle income",1322.93677459988
+"337","Comoros","2022",0.687,"COM","Lower middle income",1484.89246472542
+"338","Lesotho","2005",0.1,"LSO","Lower middle income",850.775315507556
+"339","Lesotho","2010",0.195,"LSO","Lower middle income",1104.8115468317
+"340","Lesotho","2015",0.32,"LSO","Lower middle income",1113.83683453612
+"341","Lesotho","2022",0.476,"LSO","Lower middle income",969.935760159406
+"342","Madagascar","2000",0.08,"MDG","Low income",285.466463233818
+"343","Madagascar","2005",0.15,"MDG","Low income",311.793126649035
+"344","Madagascar","2010",0.184,"MDG","Low income",459.375407996579
+"345","Madagascar","2015",0.242,"MDG","Low income",455.63803458407
+"346","Madagascar","2022",0.32,"MDG","Low income",516.592615982213
+"347","Malawi","2000",0.05,"MWI","Low income",225.952456739454
+"348","Malawi","2005",0.074,"MWI","Low income",417.102263364075
+"349","Malawi","2010",0.087,"MWI","Low income",688.139191185368
+"350","Malawi","2015",0.108,"MWI","Low income",544.276872741836
+"351","Malawi","2022",0.12,"MWI","Low income",645.158692067185
+"352","Mauritius","2000",0.99,"MUS","Upper middle income",3929.08178166029
+"353","Mauritius","2005",0.948,"MUS","Upper middle income",5282.90011111013
+"354","Mauritius","2010",0.99,"MUS","Upper middle income",8000.37643182154
+"355","Mauritius","2015",0.99,"MUS","Upper middle income",9507.87133656424
+"356","Mauritius","2022",0.99,"MUS","Upper middle income",10256.2303053576
+"357","Mozambique","2000",0.049,"MOZ","Low income",333.775138348215
+"358","Mozambique","2005",0.083,"MOZ","Low income",438.793472737165
+"359","Mozambique","2010",0.182,"MOZ","Low income",494.584022000439
+"360","Mozambique","2015",0.269,"MOZ","Low income",603.838513777915
+"361","Mozambique","2022",0.384,"MOZ","Low income",558.298606448221
+"362","Namibia","2000",0.34,"NAM","Upper middle income",2156.09024524858
+"363","Namibia","2005",0.34,"NAM","Upper middle income",3692.75260281301
+"364","Namibia","2010",0.437,"NAM","Upper middle income",5445.42006302741
+"365","Namibia","2015",0.446,"NAM","Upper middle income",4965.67276506551
+"366","Namibia","2022",0.447,"NAM","Upper middle income",5031.11503011478
+"367","Seychelles","2000",0.5,"SYC","High income",8063.65500575169
+"368","Seychelles","2005",0.54,"SYC","High income",11802.1118276833
+"369","Seychelles","2010",0.581,"SYC","High income",10938.1527643413
+"370","Seychelles","2015",0.985,"SYC","High income",14894.4857827096
+"371","Seychelles","2022",0.99,"SYC","High income",13250.4558332375
+"372","Eswatini","2000",0.25,"SWZ","Lower middle income",1686.6575322622
+"373","Eswatini","2005",0.301,"SWZ","Lower middle income",2964.97248651359
+"374","Eswatini","2010",0.352,"SWZ","Lower middle income",4035.53448063299
+"375","Eswatini","2015",0.75,"SWZ","Lower middle income",3583.31129031343
+"376","Eswatini","2022",0.833,"SWZ","Lower middle income",3986.88663743798
+"377","Tanzania","2000",0.105,"TZA","Lower middle income",399.462768554688
+"378","Tanzania","2005",0.116,"TZA","Lower middle income",480.180053710938
+"379","Tanzania","2010",0.18,"TZA","Lower middle income",730.782348632813
+"380","Tanzania","2015",0.3,"TZA","Lower middle income",929.7998046875
+"381","Tanzania","2022",0.384,"TZA","Lower middle income",1192.76647949219
+"382","Zambia","2000",0.12,"ZMB","Lower middle income",364.026145370374
+"383","Zambia","2005",0.195,"ZMB","Lower middle income",720.446504729389
+"384","Zambia","2010",0.219,"ZMB","Lower middle income",1469.36145002684
+"385","Zambia","2015",0.314,"ZMB","Lower middle income",1307.90964916032
+"386","Zambia","2022",0.336,"ZMB","Lower middle income",1456.90157015445
+"387","Zimbabwe","2000",0.397,"ZWE","Lower middle income",565.284389703613
+"388","Zimbabwe","2005",0.355,"ZWE","Lower middle income",470.783761438779
+"389","Zimbabwe","2010",0.369,"ZWE","Lower middle income",937.840339987372
+"390","Zimbabwe","2015",0.458,"ZWE","Lower middle income",1410.32917348908
+"391","Zimbabwe","2022",0.531,"ZWE","Lower middle income",1676.82148896726
+"392","Bahrain","2000",0.99,"BHR","High income",12738.7741181575
+"393","Bahrain","2005",0.99,"BHR","High income",17705.235163895
+"394","Bahrain","2010",0.99,"BHR","High income",21186.8143292279
+"395","Bahrain","2015",0.99,"BHR","High income",22795.4488576612
+"396","Bahrain","2022",0.99,"BHR","High income",30146.925026365
+"397","Iraq","2000",0.95,"IRQ","Upper middle income",1963.72283862715
+"398","Iraq","2005",0.97,"IRQ","Upper middle income",1740.66833006213
+"399","Iraq","2010",0.98,"IRQ","Upper middle income",4430.42624189518
+"400","Iraq","2015",0.98,"IRQ","Upper middle income",4416.94292408042
+"401","Iraq","2022",0.99,"IRQ","Upper middle income",5937.19546600271
+"402","Jordan","2000",0.95,"JOR","Lower middle income",1673.35812510644
+"403","Jordan","2005",0.99,"JOR","Lower middle income",2216.9451815491
+"404","Jordan","2010",0.99,"JOR","Lower middle income",3914.70123105389
+"405","Jordan","2015",0.99,"JOR","Lower middle income",4064.25301043642
+"406","Jordan","2022",0.99,"JOR","Lower middle income",4311.00004622061
+"407","Kuwait","2000",0.99,"KWT","High income",19493.8880490915
+"408","Kuwait","2005",0.99,"KWT","High income",36144.9949458716
+"409","Kuwait","2010",0.99,"KWT","High income",39212.5794137711
+"410","Kuwait","2015",0.99,"KWT","High income",29315.1985079166
+"411","Kuwait","2022",0.99,"KWT","High income",41079.5226998138
+"412","Lebanon","2000",0.95,"LBN","Lower middle income",3994.86114388889
+"413","Lebanon","2005",0.99,"LBN","Lower middle income",4630.009213533
+"414","Lebanon","2010",0.99,"LBN","Lower middle income",7695.24541457279
+"415","Lebanon","2015",0.99,"LBN","Lower middle income",7802.75136769776
+"416","Oman","2000",0.94,"OMN","High income",8321.39386651557
+"417","Oman","2005",0.96,"OMN","High income",12357.7013911873
+"418","Oman","2010",0.98,"OMN","High income",22552.1990071233
+"419","Oman","2015",0.98,"OMN","High income",18777.4330589162
+"420","Oman","2022",0.99,"OMN","High income",25056.7948608378
+"421","Saudi Arabia","2000",0.98,"SAU","High income",8795.26059641872
+"422","Saudi Arabia","2005",0.97,"SAU","High income",13462.7630489265
+"423","Saudi Arabia","2010",0.99,"SAU","High income",17958.9478313331
+"424","Saudi Arabia","2015",0.99,"SAU","High income",20442.3660631613
+"425","Saudi Arabia","2022",0.99,"SAU","High income",30447.8837074473
+"426","Qatar","2000",0.95,"QAT","High income",27494.7713320186
+"427","Qatar","2005",0.97,"QAT","High income",52468.4456475056
+"428","Qatar","2010",0.99,"QAT","High income",73021.3097525035
+"429","Qatar","2015",0.99,"QAT","High income",66984.9102002396
+"430","Qatar","2022",0.99,"QAT","High income",87661.4501457275
+"431","United Arab Emirates","2000",0.96,"ARE","High income",31855.5006047175
+"432","United Arab Emirates","2005",0.94,"ARE","High income",42190.5543794633
+"433","United Arab Emirates","2010",0.99,"ARE","High income",35392.2609669642
+"434","United Arab Emirates","2015",0.99,"ARE","High income",41525.1389031283
+"435","United Arab Emirates","2022",0.99,"ARE","High income",53707.9800809111

@@ -41,7 +41,8 @@ packages <- c(
   "luz",
   "stringr",
   "esquisse",
-  "randomForest"
+  "randomForest",
+  "gbm"
 )
 
 #renv::install(packages)
@@ -103,7 +104,7 @@ sum(!identical_values)
 comb_GDP_inc_df_long <- comb_GDP_inc_df %>%
   select(-IncomeGroup)
 comb_GDP_inc_df_long <- pivot_longer(comb_GDP_inc_df_long, 
-                                        cols = c(`2000`, `2005`, `2010`, `2015`, `2022`), 
+                                        cols = c('2000', '2005', '2010', '2015', '2022'), 
                                         names_to = "Year", 
                                         values_to = "GDP")
 
@@ -119,7 +120,7 @@ Electricity_Access <- Electricity_Access %>%
   mutate(across(where(is.numeric), round, digits = 3))
 
 Electricity_Access_long <- pivot_longer(Electricity_Access, 
-                                        cols = c(`2000`, `2005`, `2010`, `2015`, `2022`), 
+                                        cols = c('2000', '2005', '2010', '2015', '2022'), 
                                         names_to = "Year", 
                                         values_to = "Access")
 Electricity_Access_long <- rename(Electricity_Access_long, 'Country Name' = 'Country')
@@ -148,62 +149,85 @@ summary(Electricity_Access)
 
 ```
 
-#### Step 6: Visualization
-######Example 1: Bar Chart of income_level count and IncomeGroup
+#### Step 6: Analysis
+###### Analyze basic statistics of electrification rates and GDP
 
 ```{R}
-ggplot(comb_GDP_inc_df) +
-  aes(x = income_level, fill = IncomeGroup) +
-  geom_bar() +
-  scale_fill_hue(direction = 1) +
+# Filter for "Low income" and "Lower middle income" countries
+ldc_data <- data_merged %>% 
+  filter(income_level %in% c("Low income", "Lower middle income"))
+
+# Analyze basic statistics of electrification rates and GDP
+ldc_stats <- ldc_data %>% 
+  group_by('Country Name') %>% 
+  summarise(
+    Average_Access = mean(Access, na.rm = TRUE),
+    Min_Access = min(Access, na.rm = TRUE),
+    Max_Access = max(Access, na.rm = TRUE),
+    Average_GDP = mean(GDP, na.rm = TRUE),
+    Min_GDP = min(GDP, na.rm = TRUE),
+    Max_GDP = max(GDP, na.rm = TRUE)
+  )
+print(ldc_stats)
+
+```
+###### scatter plot to explore the relationship between electrification rates and GDP
+```{R}
+ggplot(ldc_data, aes(x=Access, y=GDP, color=income_level)) +
+  geom_point() +
+  labs(title = "Relationship between Access to Electricity and GDP in LDCs",
+       x = "Electrification Rate (Access)",
+       y = "GDP per capita (USD)",
+       color = "Income Level") +
   theme_minimal()
 ```
-
-###### Example 2: Line Plot of 3 countries showing 3 different states of Electricity access
+###### Identify countries with the lowest 10% of electrification rates
 
 ```{R}
-filtered_countries <- Electricity_Access_long %>% 
-  filter(`Country Name` %in% c("China", "India", "Yemen"))
+# Identify countries with the lowest 10% of electrification rates
+threshold <- quantile(ldc_data$Access, 0.10, na.rm = TRUE)
+low_electrification <- ldc_data %>% 
+  filter(Access <= threshold)
+print(low_electrification %>% 
+        select('Country Name', Year, Access, GDP) %>% 
+        arrange(Access))
 
-ggplot(filtered_countries, aes(x = Year, y = Access, color = `Country Name`, group = `Country Name`)) +
-  geom_line() + 
-  geom_point() + 
-  labs(title = "Electricity Access Over Time",
-       x = "Year",
-       y = "Access",
-       color = "Country") + 
-  theme_minimal()
-
+# Save the plot
+ggsave("Electrification_GDP_Relationship.png", width = 10, height = 6)
 ```
-###### Example 3: Boxplot for Access by income_level
-```{R}
-ggplot(data_merged, aes(x = income_level, y = Access)) + 
-    geom_boxplot() +
-    theme_minimal() +
-    ggtitle("Electricity Access by Income Level")
 
-```
 
 ---
 
 #### Step 7: Model Training
 
 ```{R}
-# set.seed(123)  # for reproducibility
-# training_rows <- createDataPartition(data_merged$'2022', p = 0.8, list = FALSE)
-# train_data <- comb_GDP_inc_df[training_rows, ]
-# test_data <- comb_GDP_inc_df[-training_rows, ]
+set.seed(123)  # for reproducibility
+training_rows <- sample(1:nrow(ldc_data), 0.8 * nrow(ldc_data))
+train_data <- ldc_data[training_rows, ]
+test_data <- ldc_data[-training_rows, ]
 ```
 
 ```{R}
-data_merged$log_GDP <- log(data_merged$GDP + 1)
-
-# Set up training control
-train_control <- trainControl(method = "cv", number = 10)
-
-# Train the model
-model <- train(income_level ~ log_GDP + Access, data = data_merged, method = "rpart", trControl = train_control)
+model <- randomForest(Access ~ GDP + Year, data = train_data, ntree = 100)
+print(model)
 ```
+```{R}
+# Predict on the testing data
+predictions <- predict(model, test_data)
+
+# Calculate Mean Absolute Error (MAE) as a simple performance metric
+mae <- mean(abs(predictions - test_data$Access))
+print(paste("Mean Absolute Error: ", mae))
+```
+
+```{R}
+new_data <- data.frame(GDP = c(500, 1000), Year = c(2022, 2022))
+predicted_access <- predict(model, new_data)
+print(predicted_access)
+```
+
+
 ---
 
 
